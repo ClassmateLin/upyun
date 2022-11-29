@@ -1,0 +1,25 @@
+[package]
+name = "upyun"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+serde = {version = "1.0.148", features = ["derive"]}
+serde_json = {version = "1.0.89", default-features = false, features = ["alloc"]}
+reqwest = {version="0.11.13", default-features=false, features = ["json", "rustls-tls", "cookies"]}
+tokio = { version = "1.21.2", default-features = false, features = ["macros", "rt-multi-thread"] }
+anyhow = {version="1.0.66"}
+log = { version = "0.4.17"}
+pretty_env_logger = { version = "0.4.0"}
+dotenv = {version="0.15.0"}
+futures = {version="0.3.24"}
+chrono = { version="0.4"}
+toml = {version ="0.5.9"}
+
+[profile.release]
+lto = true
+opt-level="z"
+codegen-units = 1
+panic = "abort"
+strip = true
